@@ -106,9 +106,7 @@ router.post('/', function (req, res) {
   );
   var move = ai.callShot(true);
   console.log(move);
-  res.json({
-    'move': move
-  });
+  res.status(200).end();
 });
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
