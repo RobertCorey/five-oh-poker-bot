@@ -1,0 +1,2685 @@
+<html xmlns:fb="https://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script type="text/javascript" async="" src="//admin.appnext.com/tki.js"></script><script id="facebook-jssdk" async="" src="//connect.facebook.net/en_US/all.js"></script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-1.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"f8ab1c021a","applicationID":"1448259","transactionName":"Ig0MTUBXVFpcRRkTVAMDEklBF15XWlJUC14KPQFYXE5ZRQ==","queueTime":1,"applicationTime":63,"ttGuid":"","agentToken":null,"agent":"js-agent.newrelic.com/nr-476.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XA4HUVNACQcEXFNXDg=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),u=c.length,f=i(a,o,r),d=0;u>d;d++)c[d].apply(f,n);return f}function a(t,e){u[t]=s(t).concat(e)}function s(t){return u[t]||[]}function c(){return n(e)}var u={};return{on:a,emit:e,create:c,listeners:s,_events:u}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(u){try{r("ierr",[u,(new Date).getTime(),!0])}catch(f){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(4),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(u){"stack"in u&&(t(5),t(3),"addEventListener"in window&&t(1),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(2),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:4,2:7,3:5,4:18,5:6,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],4:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:18,2:19,ee:"QJf3ax",gos:"7eSDFh"}],5:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:19,2:18,ee:"QJf3ax"}],6:[function(t,e){function n(t,e,n){var r=t[0];"string"==typeof r&&(r=new Function(r)),t[0]=o(r,"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:19,2:18,ee:"QJf3ax"}],7:[function(t,e){function n(){c.inPlace(this,d,"fn-")}function r(t,e){c.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}var i=t("ee").create(),a=t(1),s=t(2),c=s(i),u=s(a),f=window.XMLHttpRequest,d=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=i,window.XMLHttpRequest=function(t){var e=new f(t);try{i.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",function(t,e){return e}),e.addEventListener("readystatechange",n,!1)}catch(r){try{i.emit("internal-error",[r])}catch(o){}}return e},window.XMLHttpRequest.prototype=f.prototype,c.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),i.on("send-xhr-start",r),i.on("open-xhr-start",r)},{1:4,2:19,ee:"QJf3ax"}],8:[function(t){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,u="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(u);if(f&&(r.rxSize=f),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(n.cat=d.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r,this.startTime])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,u=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var u=e(o);u&&(r.txSize=u)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",[e])}catch(r){}}};for(var f=0;c>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+u(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:9,3:7,4:4,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],9:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&c&&c.body){p.proto="https"===d.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=c.createElement("script");e.src=p.proto+t.agent,c.body.appendChild(e)}}function r(){"complete"===c.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,c=s.document,u="addEventListener",f="attachEvent",d=(""+location).split("?")[0],p=e.exports={offset:i(),origin:d,features:{}};c[u]?(c[u]("DOMContentLoaded",o,!1),s[u]("load",n,!1)):(c[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],18:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],19:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,u;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){f([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return u=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,u],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,u(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,u="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,u?s+o:o,i,s,t))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){f([o,e,n,r])}}function u(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){f([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function f(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:18,ee:"QJf3ax"}]},{},["G9z0Bl",3,8]);</script>
+<title>Five-O Poker</title>
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="1se0BxwBZ6uSLhvfWZqJkvxqZNjfrHBk0dMOHxkO+ng=">
+
+<link href="/stylesheets/g/93ec54061081ea9cce676fe5f0d02edb.css?1412589034" media="screen" rel="stylesheet" type="text/css">
+<!--[if lt IE 9]> <link rel="stylesheet" type="text/css" href="/stylesheets/ie.css"/> <![endif]-->
+
+<style type="text/css"></style><style type="text/css">.jcf-unselectable{-moz-user-select:none;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-user-select:none;user-select:none;}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{max-height:590px;min-height:590px;max-width:500px;min-width:500px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;left:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29447e;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://fbstatic-a.akamaihd.net/rsrc.php/v2/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fbpluginrecommendationsbarleft,.fbpluginrecommendationsbarright{position:fixed !important;bottom:0;z-index:999}.fbpluginrecommendationsbarleft{left:10px}.fbpluginrecommendationsbarright{right:10px}</style></head>
+<body>
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://s-static.ak.facebook.com/connect/xd_arbiter/KFZn1BJ0LYk.js?version=41#channel=f23702522&amp;origin=https%3A%2F%2Fwww.fiveopoker.com" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+<script>
+  //<![CDATA[
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId: '194045377300689',
+        status: true, cookie: true, xfbml: true, oauth: true, frictionlessRequests: true
+      });
+    };
+    (function(d, debug){
+       var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement('script'); js.id = id; js.async = true;
+       js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+       ref.parentNode.insertBefore(js, ref);
+     }(document, false));
+  //]]>
+</script>
+
+<!--[if lt IE 8]> <div style='clear:both; height:45px; padding: 3px 0 3px 0; position:relative;'><a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="/images/ie_warning_bar.jpg" border="0" height="39" width="760" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a></div> <![endif]-->
+<div class="light-box loading" id="loading" style="display: none;">
+<div class="frame">
+<div class="light-holder2">
+<div class="load-box">
+<div class="load-holder">
+<img height="38" src="/images/spinner.gif?50" width="37">
+<span>loading</span>
+</div>
+</div>
+<strong class="logo">
+<a>5:0 poker</a>
+</strong>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div id="busy-overlay" style="opacity: 0; display: none;"></div>
+<div id="wrapper" style="">
+<iframe class="top_maudau_bar ad_bar" frameborder="0" height="72" marginheight="0" marginwidth="0" scrolling="no" style="width:760px; height:75px; display:none" width="100%"></iframe>
+<div class="new-header-style" data-page="header" id="header">
+<div class="header-holder">
+<div class="like-popup" style="display:none">
+<div class="like-header">
+<div class="like-title">Like Five-O Poker</div>
+<div class="like-close">
+<a href="#">x</a>
+</div>
+</div>
+<div class="like-content">
+<div class="like-image">
+<a href="https://www.facebook.com/pages/Five-O-Poker/247452848648844" target="_blank">
+<img height="50" src="/images/banners/small.jpg?1412589022" width="50">
+</a>
+</div>
+<div class="like-description">
+<div class="like-text">
+<a href="https://www.facebook.com/pages/Five-O-Poker/247452848648844" target="_blank">
+Five-O Poker
+</a>
+on Facebook
+</div>
+<div class="fb-like fb_iframe_widget" data-href="https://www.facebook.com/pages/Five-O-Poker/247452848648844" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=194045377300689&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FFive-O-Poker%2F247452848648844&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 80px; height: 20px;"><iframe name="f34f6bccb4" width="90px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/plugins/like.php?app_id=194045377300689&amp;channel=https%3A%2F%2Fs-static.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKFZn1BJ0LYk.js%3Fversion%3D41%23cb%3Df33136d978%26domain%3Dwww.fiveopoker.com%26origin%3Dhttps%253A%252F%252Fwww.fiveopoker.com%252Ff23702522%26relation%3Dparent.parent&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FFive-O-Poker%2F247452848648844&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90" class="" style="border: none; visibility: visible; width: 80px; height: 20px;"></iframe></span></div>
+</div>
+</div>
+</div>
+
+<div class="holder">
+<span class="chip" style="display: none;">&nbsp;</span>
+<h1 class="logo">
+<a>50Pocker</a>
+</h1>
+<div class="panel" style="display: none;">
+<strong>Follow these steps &amp; earn bonuses</strong>
+<ul>
+<li>
+<a><span>1</span>install
+</a>
+</li>
+<li data-elem="subscribe_bonus">
+<a class="do-subscribe-bonus"><span>2</span>subscribe
+</a>
+</li>
+<li data-elem="like_bonus">
+<a class="do-like-bonus"><span>3</span>Like
+</a>
+</li>
+<li data-elem="publish_bonus">
+<a class="do-publish-bonus"><span class="red">4</span>Publish
+</a>
+</li>
+</ul>
+<div class="progress-bar">
+<div style="width: 11px;">
+<span>&nbsp;</span>
+</div>
+</div>
+</div>
+<img height="32" id="busy-spinner" src="/images/misc/busy-spinner.gif?50" width="32" style="display: none;">
+</div>
+<div class="bar">
+<ul class="add-nav">
+<li>
+<a data-action="lobby" href="#">Lobby</a>
+</li>
+<li>
+<a data-action="buy_chips" href="#">Buy Chips</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">Invite Friends</a>
+</li>
+<li>
+<a data-action="send_gift" href="#">Send Gifts</a>
+</li>
+<li>
+<a data-action="player_log open_href" data-player_log="fan_page" href="https://www.facebook.com/pages/Five-O-Poker/247452848648844">Fan Page</a>
+</li>
+<li class="blue">
+<a data-action="player_log popup" data-player_log="mobile" data-popup="mobile" href="#">Mobile App</a>
+</li>
+</ul>
+<ul class="info">
+<li class="game-mode" style="display: list-item; background: none;">
+<a data-action="lobby" href="#">To Lobby</a>
+</li>
+<li style="">
+<a data-action="tutorial" href="#">How to Play</a>
+</li>
+<li>
+<a data-action="player_log open_href" data-player_log="faq_page" href="http://www.chikigaming.com/#!faq">Faq</a>
+</li>
+<li>
+<a class="vol" data-action="toggle_mute" href="#">volume</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="main">
+<div class="main-holder">
+<div class="cell d-j ui-draggable" id="movable-card" style="display: block; opacity: 0;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+<div class="movable-chip" id="movable-player-chip" style="top: 294px; left: 48px; display: none;"></div>
+<div class="movable-chip" id="movable-opponent-chip" style="top: 218px; left: 48px; display: none;"></div>
+<div class="invite-box" id="popup-message" style="display:none">
+<div class="invite-holder">
+<div class="picture-holder">
+<img class="d-image" height="24" width="24">
+</div>
+<strong class="name d-first-name"></strong>
+<span class="online d-text">Is Now Online</span>
+</div>
+</div>
+<div class="invite-box" id="popup-confirmation" style="display:none">
+<div class="invite-holder">
+<div class="picture-holder">
+<img class="d-image" height="24" width="24">
+</div>
+<strong class="name d-first-name"></strong>
+<span class="online d-text">Invites you</span>
+</div>
+<ul class="invite-menu">
+<li>
+<a class="confirm popup-close popup-accept" href="#">Confirm</a>
+</li>
+<li>
+<a class="not-now popup-close" href="#">Not Now</a>
+</li>
+</ul>
+</div>
+<div class="strip-bar" data-page="top_bar" id="top_bar">
+<div class="buy-box">
+<strong class="num d-chips-long">23,639</strong>
+<a class="btn-buy" data-action="buy_chips" href="#">Buy Chips</a>
+</div>
+<a class="offer-box" data-action="show_offer" data-page="offer_box" href="#" style="display: none;">
+<span class="num">99:99:99</span>
+</a>
+<div class="mission-box">
+<a class="logo-silver silver10"></a>
+<div class="status-bar">
+<div style="width: 90%;">
+<span>&nbsp;</span>
+<em class="num">112386/125000</em>
+</div>
+</div>
+<span class="num gold-num1"></span>
+</div>
+<div class="popup-holder">
+<a class="gift-link">&nbsp;</a>
+<div class="gift-popup" style="display:none">
+<div class="holder">
+<div class="frame">
+<ul class="info-list">
+<li>
+Next Level:
+<strong data-elem="next">Gold1</strong>
+</li>
+<li>
+Level-up bonus:
+<strong data-elem="bonus">600</strong>
+Chips
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="mission-box2">
+<div class="popup-holder">
+<a class="opener beat-bronze">beat_bronze</a>
+<div class="small-popup" style="display:none">
+<div class="holder">
+<div class="frame">
+<div class="content">
+<div>
+<span>Beat Bronze opponents <br> in 10 games.<br>Bonus: 400 chips.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow" style="display:none"></div>
+</div>
+<div class="status-bar">
+<div style="width: 20%;">
+<span>&nbsp;</span>
+<em class="num">2/10</em>
+</div>
+</div>
+</div>
+</div>
+<div class="main-section lobby-mode" data-page="choose_a_table" style="display: none;">
+<div class="no_chips_overlay light-box14" data-page="no_chips_overlay" style="display: none;">
+<div class="boxes">
+<div class="box">
+<span class="no-more">no more ships</span>
+<span class="ran-chips">you ran our of chips</span>
+<p>
+get chips now to stay in the game
+<br>
+or claim your special bonus when available
+</p>
+<a class="get-now" data-action="buy_chips" href="#">get chips now</a>
+</div>
+</div>
+</div>
+<div class="main-block" data-section="home" style="display: none;">
+<ul class="types-list">
+<li class="classic-table enable">
+<a data-action="select_lobby_section" data-section="classic" href="#" data-table_no="0" data-min_chips="100" data-disabled="">
+<div class="table-image"></div>
+<span class="type-name type-classic">Classic</span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="pro-table enable">
+<a data-action="select_lobby_section" data-section="pro" href="#" data-table_no="1" data-min_chips="2500" data-disabled="">
+<div class="table-image"></div>
+<span class="type-name type-pro">Pro</span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="vip-table disable">
+<a data-action="select_lobby_section" data-section="vip" href="#" data-table_no="2" data-min_chips="100000" data-disabled="disabled">
+<div class="table-image"></div>
+<span class="type-name type-vip">Vip</span>
+<span class="lock">Lock</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="main-block" data-section="classic">
+<div class="type-block">
+<a class="btn-back" data-action="select_lobby_section player_log" data-player_log="back" data-section="home" href="#">back</a>
+<div class="photo">
+<a>
+<img height="240" src="/images/misc/classic.png?50" width="198">
+</a>
+</div>
+<ul class="item-list">
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="1500" data-player_log_comments="classic" data-stake="1500" data-table="classic" href="#" data-table_no="0" data-disabled="">
+<img height="99" src="/images/img42.png?50" width="99">
+<span class="price price-1500"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="2500" data-player_log_comments="classic" data-stake="2500" data-table="classic" href="#" data-table_no="0" data-disabled="">
+<img height="99" src="/images/img42.png?50" width="99">
+<span class="price price-2500"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="5000" data-player_log_comments="classic" data-stake="5000" data-table="classic" href="#" data-table_no="0" data-disabled="">
+<img height="99" src="/images/img42.png?50" width="99">
+<span class="price price-5000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="10000" data-player_log_comments="classic" data-stake="10000" data-table="classic" href="#" data-table_no="0" data-disabled="">
+<img height="99" src="/images/img42.png?50" width="99">
+<span class="price price-10000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="20000" data-player_log_comments="classic" data-stake="20000" data-table="classic" href="#" data-table_no="0" data-disabled="">
+<img height="99" src="/images/img42.png?50" width="99">
+<span class="price price-20000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="main-block" data-section="pro" style="display: none;">
+<div class="type-block pro-type">
+<a class="btn-back" data-action="select_lobby_section player_log" data-player_log="back" data-section="home" href="#">back</a>
+<div class="photo">
+<a>
+<img height="240" src="/images/misc/pro.png?50" width="198">
+</a>
+</div>
+<ul class="item-list">
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="1500" data-player_log_comments="pro" data-stake="1500" data-table="pro" href="#" data-table_no="1" data-disabled="">
+<img height="99" src="/images/img45.png?50" width="99">
+<span class="price price-1500"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="2500" data-player_log_comments="pro" data-stake="2500" data-table="pro" href="#" data-table_no="1" data-disabled="">
+<img height="99" src="/images/img45.png?50" width="99">
+<span class="price price-2500"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="5000" data-player_log_comments="pro" data-stake="5000" data-table="pro" href="#" data-table_no="1" data-disabled="">
+<img height="99" src="/images/img45.png?50" width="99">
+<span class="price price-5000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="10000" data-player_log_comments="pro" data-stake="10000" data-table="pro" href="#" data-table_no="1" data-disabled="">
+<img height="99" src="/images/img45.png?50" width="99">
+<span class="price price-10000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="enable">
+<a data-action="invite_random player_log" data-player_log="20000" data-player_log_comments="pro" data-stake="20000" data-table="pro" href="#" data-table_no="1" data-disabled="">
+<img height="99" src="/images/img45.png?50" width="99">
+<span class="price price-20000"></span>
+<span class="lock">Lock</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="main-block" data-section="vip" style="display: none;">
+<div class="type-block vip-type">
+<a class="btn-back" data-action="select_lobby_section player_log" data-player_log="back" data-section="home" href="#">back</a>
+<div class="photo">
+<a>
+<img height="240" src="/images/misc/vip.png?50" width="198">
+</a>
+</div>
+<ul class="item-list">
+<li class="disable">
+<a data-action="invite_random player_log" data-player_log="vip_classic" data-player_log_comments="vip_classic" data-table="vip_classic" href="#" data-table_no="2" data-disabled="disabled">
+<img height="99" src="/images/img47.png?50" width="99">
+<span class="type-name type-classic">Classic</span>
+<span class="lock">Lock</span>
+</a>
+</li>
+<li class="disable">
+<a data-action="invite_random player_log" data-player_log="vip_pro" data-player_log_comments="vip_pro" data-table="vip_pro" href="#" data-table_no="3" data-disabled="disabled">
+<img height="99" src="/images/img47.png?50" width="99">
+<span class="type-name type-pro">Pro</span>
+<span class="lock">Lock</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="player-strip lobby-mode" data-page="lobby" style="display: none;">
+<div class="play-box2 b-player">
+<div class="player-col">
+<div class="player-row">
+<div class="photo-holder">
+<img class="d-image" height="51" width="51" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c0.2.50.50/p50x50/10565187_1667433370147627_2490270950311862841_n.jpg?oh=79ad16f907aee5570f423b737817d889&amp;oe=54AF4A43&amp;__gda__=1420542642_973de8773a93b3713af93f39621fa119">
+</div>
+<strong class="name d-first-name">Robert</strong>
+</div>
+<div class="chips-holder">
+<a class="logo-silver silver10" data-data="player_level">silver2</a>
+<span class="d-chips-short">25k</span>
+</div>
+</div>
+<div class="count-box">
+<div>
+<span>Position</span>
+<strong class="d-position">6708</strong>
+</div>
+<div>
+<span>Win-Loss</span>
+<strong class="d-won-lost" title="148 : 152">148:152</strong>
+</div>
+<div>
+<span>Five - O</span>
+<strong class="d-fiveo" title="11 : 8">11:8</strong>
+</div>
+<a data-action="show_leaderboard" href="#">
+<strong class="text-weekly-contest">WEEKLY CONTEST</strong>
+</a>
+</div>
+</div>
+<div class="bonus-panel">
+<div class="gifts-box">
+<span class="ico-gift">&nbsp;</span>
+<a data-action="send_gift" href="#">SEND GIFTS</a>
+<a class="btn-colect disabled" data-action="show_gifts" href="#">
+<span>COLLECT GIFTS</span>
+<em class="num">0</em>
+</a>
+</div>
+<div class="bonus-box" id="refill_box">
+<span class="text-special-bonus">SPECIAL BONUS</span>
+<div class="timer-holder">
+<em class="time active">02:37:43</em>
+<a class="btn-collect" data-action="refill" data-animate_from="#refill_box .ico-chest" href="#">COLLECT</a>
+</div>
+<div class="status-bar">
+<div style="width: 34%;">
+<span>&nbsp;</span>
+</div>
+</div>
+<span class="ico-chest">&nbsp;</span>
+</div>
+</div>
+</div>
+<div id="content">
+<div class="card-field game-mode" style="display: block;">
+<div class="game-finished-overlay green-block" data-page="game_finished" style="display: none;">
+<div class="game-won-block game-finished-block" style="display: block;">
+<strong class="score">score</strong>
+<strong class="ttl">
+<span>
+<strong class="d-hands-won point3">3</strong>
+<strong class="point-dot">:</strong>
+<strong class="d-hands-lost point2">2</strong>
+</span>
+</strong>
+<strong class="ttl">
+you won
+<em class="d-game-chips">3,000</em>
+</strong>
+<strong class="play-again rematch-request">play again</strong>
+<ul class="game-set rematch-request m-buttons">
+<li>
+<a data-action="rematch" data-rematch_ratio="1" href="#">
+<strong class="d-title">same</strong>
+<span class="d-amount">1,500</span>
+</a>
+</li>
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="2" href="#">
+<strong class="d-title">double</strong>
+<span class="d-amount">3,000</span>
+</a>
+</li>
+<li>
+<a data-action="rematch" data-rematch_ratio="3" href="#">
+<strong class="d-title">triple</strong>
+<span class="d-amount">4,500</span>
+</a>
+</li>
+</ul>
+<strong class="play-again new-opponent" style="display: none;">play again</strong>
+<ul class="game-set new-opponent m-buttons" style="display: none;">
+<li class="active">
+<a data-action="invite_random" data-stake="1500" data-table="classic" href="#">
+<strong class="d-title">new <br> player</strong>
+</a>
+</li>
+</ul>
+<div class="green-block-text rematch-response" style="display: none;">
+<p>
+<font class="d-message">The opponent has just challenged you to</font>
+<strong class="d-kind">DOUBLE</strong>
+are you up for it?
+</p>
+</div>
+<ul class="choose rematch-response m-buttons" style="display: none;">
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="0" href="#"><strong>Yes, I am</strong>let's go for it
+</a>
+</li>
+<li>
+<a class="m-ratio-one" data-action="rematch" data-rematch_ratio="1" href="#">I prefer to keep the blinds as-is</a>
+</li>
+</ul>
+<ul class="links">
+<li>
+<a class="do-view-table" href="#">View Table</a>
+</li>
+<li>
+<a data-action="lobby" href="#">BACK TO LOBBY</a>
+</li>
+</ul>
+<div class="player-box b-accepted" style="display: none;">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">9</span>
+<img class="d-image" height="40" width="40">
+</div>
+<strong>
+<span class="d-first-name"></span>
+</strong>
+<a data-action="invite" data-player_id="" data-table="" href="#">Play</a>
+</div>
+
+</div>
+<div class="game-lost-block game-finished-block" style="display: none;">
+<span class="b-opponent">
+<strong class="name d-first-name"></strong>
+</span>
+<strong class="ttl">
+has won the game
+<span>
+<strong class="d-hands-won point4">4</strong>
+<strong class="point-dot">:</strong>
+<strong class="d-hands-lost point1">1</strong>
+</span>
+</strong>
+<strong class="play-again rematch-request">play again</strong>
+<ul class="game-set rematch-request m-buttons">
+<li>
+<a data-action="rematch" data-rematch_ratio="1" href="#">
+<strong class="d-title">x1</strong>
+<span class="d-amount">1</span>
+</a>
+</li>
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="2" href="#">
+<strong class="d-title">x2</strong>
+<span class="d-amount">2</span>
+</a>
+</li>
+<li>
+<a data-action="rematch" data-rematch_ratio="3" href="#">
+<strong class="d-title">x3</strong>
+<span class="d-amount">3</span>
+</a>
+</li>
+</ul>
+<strong class="play-again new-opponent">play again</strong>
+<ul class="game-set new-opponent m-buttons">
+<li class="active">
+<a data-action="invite_random" data-stake="" data-table="" href="#">
+<strong class="d-title">new <br> player</strong>
+</a>
+</li>
+</ul>
+<div class="green-block-text rematch-response">
+<p>
+<font class="d-message">The opponent has just challenged you to</font>
+<strong class="d-kind">DOUBLE</strong>
+are you up for it?
+</p>
+</div>
+<ul class="choose rematch-response m-buttons">
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="0" href="#"><strong>Yes, I am</strong>let's go for it
+</a>
+</li>
+<li>
+<a class="m-ratio-one" data-action="rematch" data-rematch_ratio="1" href="#">I prefer to keep the blinds as-is</a>
+</li>
+</ul>
+<ul class="links">
+<li>
+<a class="do-view-table" href="#">View Table</a>
+</li>
+<li>
+<a data-action="lobby" href="#">BACK TO LOBBY</a>
+</li>
+</ul>
+<div class="player-box b-accepted">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">9</span>
+<img class="d-image" height="40" width="40">
+</div>
+<strong>
+<span class="d-first-name"></span>
+</strong>
+<a data-action="invite" data-player_id="" data-table="" href="#">Play</a>
+</div>
+
+</div>
+<div class="forfeit-lost-block game-finished-block" style="display: none;">
+<strong class="surrended">You have surrendered</strong>
+<strong class="play-again rematch-request">play again</strong>
+<ul class="game-set rematch-request m-buttons">
+<li>
+<a data-action="rematch" data-rematch_ratio="1" href="#">
+<strong class="d-title">same</strong>
+<span class="d-amount">1,500</span>
+</a>
+</li>
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="2" href="#">
+<strong class="d-title">double</strong>
+<span class="d-amount">3,000</span>
+</a>
+</li>
+<li>
+<a data-action="rematch" data-rematch_ratio="3" href="#">
+<strong class="d-title">triple</strong>
+<span class="d-amount">4,500</span>
+</a>
+</li>
+</ul>
+<strong class="play-again new-opponent" style="display: none;">play again</strong>
+<ul class="game-set new-opponent m-buttons" style="display: none;">
+<li class="active">
+<a data-action="invite_random" data-stake="1500" data-table="classic" href="#">
+<strong class="d-title">new <br> player</strong>
+</a>
+</li>
+</ul>
+<div class="green-block-text rematch-response" style="display: none;">
+<p>
+<font class="d-message">The opponent has just challenged you to</font>
+<strong class="d-kind">DOUBLE</strong>
+are you up for it?
+</p>
+</div>
+<ul class="choose rematch-response m-buttons" style="display: none;">
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="0" href="#"><strong>Yes, I am</strong>let's go for it
+</a>
+</li>
+<li>
+<a class="m-ratio-one" data-action="rematch" data-rematch_ratio="1" href="#">I prefer to keep the blinds as-is</a>
+</li>
+</ul>
+<ul class="links">
+<li>
+<a class="do-view-table" href="#">View Table</a>
+</li>
+<li>
+<a data-action="lobby" href="#">BACK TO LOBBY</a>
+</li>
+</ul>
+<div class="player-box b-accepted" style="display: none;">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">9</span>
+<img class="d-image" height="40" width="40">
+</div>
+<strong>
+<span class="d-first-name"></span>
+</strong>
+<a data-action="invite" data-player_id="" data-table="" href="#">Play</a>
+</div>
+
+</div>
+<div class="forfeit-won-block game-finished-block" style="display: none;">
+<strong class="sub-ttl">your opponent has</strong>
+<strong class="surrended">surrendered</strong>
+<strong class="ttl">
+you won
+<em class="d-game-chips">2000</em>
+</strong>
+<strong class="play-again rematch-request">play again</strong>
+<ul class="game-set rematch-request m-buttons">
+<li>
+<a data-action="rematch" data-rematch_ratio="1" href="#">
+<strong class="d-title">x1</strong>
+<span class="d-amount">1</span>
+</a>
+</li>
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="2" href="#">
+<strong class="d-title">x2</strong>
+<span class="d-amount">2</span>
+</a>
+</li>
+<li>
+<a data-action="rematch" data-rematch_ratio="3" href="#">
+<strong class="d-title">x3</strong>
+<span class="d-amount">3</span>
+</a>
+</li>
+</ul>
+<strong class="play-again new-opponent">play again</strong>
+<ul class="game-set new-opponent m-buttons">
+<li class="active">
+<a data-action="invite_random" data-stake="" data-table="" href="#">
+<strong class="d-title">new <br> player</strong>
+</a>
+</li>
+</ul>
+<div class="green-block-text rematch-response">
+<p>
+<font class="d-message">The opponent has just challenged you to</font>
+<strong class="d-kind">DOUBLE</strong>
+are you up for it?
+</p>
+</div>
+<ul class="choose rematch-response m-buttons">
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="0" href="#"><strong>Yes, I am</strong>let's go for it
+</a>
+</li>
+<li>
+<a class="m-ratio-one" data-action="rematch" data-rematch_ratio="1" href="#">I prefer to keep the blinds as-is</a>
+</li>
+</ul>
+<ul class="links">
+<li>
+<a class="do-view-table" href="#">View Table</a>
+</li>
+<li>
+<a data-action="lobby" href="#">BACK TO LOBBY</a>
+</li>
+</ul>
+<div class="player-box b-accepted">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">9</span>
+<img class="d-image" height="40" width="40">
+</div>
+<strong>
+<span class="d-first-name"></span>
+</strong>
+<a data-action="invite" data-player_id="" data-table="" href="#">Play</a>
+</div>
+
+</div>
+<div class="game-fiveo-block game-finished-block win50" style="display: none;">
+<strong class="score2">score</strong>
+<strong class="ttl">
+<span>
+<em>
+<strong class="d-hands-won point5">5</strong>
+<strong class="point-dot">:</strong>
+<strong class="d-hands-lost point0">0</strong>
+</em>
+</span>
+</strong>
+<strong class="ttl">
+you won
+<em class="d-game-chips">2000</em>
+</strong>
+<strong class="play-again rematch-request">play again</strong>
+<ul class="game-set rematch-request m-buttons">
+<li>
+<a data-action="rematch" data-rematch_ratio="1" href="#">
+<strong class="d-title">x1</strong>
+<span class="d-amount">1</span>
+</a>
+</li>
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="2" href="#">
+<strong class="d-title">x2</strong>
+<span class="d-amount">2</span>
+</a>
+</li>
+<li>
+<a data-action="rematch" data-rematch_ratio="3" href="#">
+<strong class="d-title">x3</strong>
+<span class="d-amount">3</span>
+</a>
+</li>
+</ul>
+<strong class="play-again new-opponent">play again</strong>
+<ul class="game-set new-opponent m-buttons">
+<li class="active">
+<a data-action="invite_random" data-stake="" data-table="" href="#">
+<strong class="d-title">new <br> player</strong>
+</a>
+</li>
+</ul>
+<div class="green-block-text rematch-response">
+<p>
+<font class="d-message">The opponent has just challenged you to</font>
+<strong class="d-kind">DOUBLE</strong>
+are you up for it?
+</p>
+</div>
+<ul class="choose rematch-response m-buttons">
+<li class="active">
+<a data-action="rematch" data-rematch_ratio="0" href="#"><strong>Yes, I am</strong>let's go for it
+</a>
+</li>
+<li>
+<a class="m-ratio-one" data-action="rematch" data-rematch_ratio="1" href="#">I prefer to keep the blinds as-is</a>
+</li>
+</ul>
+<ul class="links">
+<li>
+<a class="do-view-table" href="#">View Table</a>
+</li>
+<li>
+<a data-action="lobby" href="#">BACK TO LOBBY</a>
+</li>
+</ul>
+<div class="player-box b-accepted">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">9</span>
+<img class="d-image" height="40" width="40">
+</div>
+<strong>
+<span class="d-first-name"></span>
+</strong>
+<a data-action="invite" data-player_id="" data-table="" href="#">Play</a>
+</div>
+
+</div>
+
+</div>
+<div class="game-table">
+<div class="opponent-card-row card-row">
+<div class="column">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell h-5" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-8" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-9" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-6" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-8" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="column">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell s-10" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-6" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-8" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-3" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-8 last-move" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="column">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell d-8" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-k" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-j" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-2" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-k" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="column">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell h-3" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-10" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-8" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-k" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-a" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="column">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell d-q" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-4" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-a" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-6" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-6" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="player-card-row card-row row2">
+<div class="column valid-move ui-droppable" data-move="0">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell h-7" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-j" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-a" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-5" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-2" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+<span class="overlay" style="display: none;">&nbsp;</span>
+</div>
+<div class="column invalid-move" data-move="1">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell d-3" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-4" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-9" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-4" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-7" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+<span class="overlay" style="display: block;">&nbsp;</span>
+</div>
+<div class="column invalid-move" data-move="2">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell d-5" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-3" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-a" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-q" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-j" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+<span class="overlay" style="display: block;">&nbsp;</span>
+</div>
+<div class="column valid-move ui-droppable" data-move="3">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell c-4" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-5" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-3" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell h-3" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-3" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+<span class="overlay" style="display: none;">&nbsp;</span>
+</div>
+<div class="column valid-move ui-droppable" data-move="4">
+<span class="win" style="display: none;">win</span>
+<ul>
+<li>
+<div class="cell c-k" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell c-7" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell d-7" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="cell s-7" style="display: none;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+</ul>
+<span class="overlay" style="display: none;">&nbsp;</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div data-page="sidebar" id="sidebar">
+<div class="play-box1 game-mode b-opponent" style="display: block;">
+<div class="game-timer game-timer1" data-direction="bottom-top">
+<div class="timer-content" style="height: 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer2" data-direction="left-right">
+<div class="timer-content" style="right: -216px; background-position: -216px 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer3" data-direction="top-bottom">
+<div class="timer-content" style="bottom: -141px; background-position: 0px -141px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer4" data-direction="right-left">
+<div class="timer-content" style="width: 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer5" data-direction="bottom-top">
+<div class="timer-content" style="height: 0px;">&nbsp;</div>
+</div>
+<div class="player-msg-box">
+<span></span>
+</div>
+<div class="count-box">
+<div>
+<strong class="d-position">5343</strong>
+<span>Position</span>
+</div>
+<div>
+<strong class="d-won-lost" title="3,022 : 2,514">3k:2.5k</strong>
+<span>Win-Loss</span>
+</div>
+<div>
+<strong class="d-fiveo" title="84 : 65">84:65</strong>
+<span>Five - O</span>
+</div>
+</div>
+<div class="chips-holder">
+<div class="logo-diamond diamond1" data-data="player_level">silver2</div>
+<span class="d-chips-long">523,944</span>
+</div>
+<img class="d-image" height="40" width="40" src="https://s3.amazonaws.com/fiveopoker-assets/user-profiles/30396_686442967_698.jpg">
+<strong class="name d-first-name">Taurus</strong>
+</div>
+<div class="slider game-mode" style="display: block;">
+<div class="slider-wrap">
+<div class="stat-holder b-headsup">
+<dl>
+<dt>Total Games</dt>
+<dd class="d-games_delta">-0</dd>
+<dt>Five - 0</dt>
+<dd class="d-fiveos_delta">-0</dd>
+<dt>Total Chips</dt>
+<dd class="d-chips_delta">-0</dd>
+</dl>
+<span class="stats">
+<em>heads-up stats</em>
+</span>
+</div>
+</div>
+<div class="box-card">
+<div class="rate">
+<span style="">&nbsp;</span>
+<strong class="d-pot" style="display: block;">3,000</strong>
+<span style="">&nbsp;</span>
+</div>
+<div class="card-holder">
+<span>&nbsp;</span>
+<ul>
+<li>
+<div class="cell closed-back">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="next2-card cell closed-back" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+</li>
+<li>
+<div class="next-card cell d-j" style="display: block;">
+<div class="cell-holder">&nbsp;</div>
+</div>
+<div class="overlay" style="display: none;"></div>
+</li>
+</ul>
+</div>
+<div class="dealer-chat" id="dealer-chat" style="display: none;">
+<strong>dealer chat</strong>
+<div class="frame" style="overflow: hidden; padding: 0px; width: 0px;"><div class="jspContainer" style="width: 0px; height: 80px;"><div class="jspPane" style="padding: 0px; top: 0px; width: 0px;"><dl></dl></div></div></div>
+</div>
+</div>
+</div>
+<div class="play-box3" style="display: none;"></div>
+<div class="play-box2 game-mode b-player" style="display: block;">
+<div class="game-timer game-timer1" data-direction="bottom-top">
+<div class="timer-content" style="height: 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer2" data-direction="left-right">
+<div class="timer-content" style="right: -126px; background-position: -126px 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer3" data-direction="top-bottom">
+<div class="timer-content" style="bottom: 0px; background-position: 0px 0px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer4" data-direction="right-left">
+<div class="timer-content" style="width: 216px;">&nbsp;</div>
+</div>
+<div class="game-timer game-timer5" data-direction="bottom-top">
+<div class="timer-content" style="height: 68px;">&nbsp;</div>
+</div>
+<img class="d-image" height="40" width="40" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c0.2.50.50/p50x50/10565187_1667433370147627_2490270950311862841_n.jpg?oh=79ad16f907aee5570f423b737817d889&amp;oe=54AF4A43&amp;__gda__=1420542642_973de8773a93b3713af93f39621fa119">
+<strong class="name d-first-name">Robert</strong>
+<div class="chips-holder">
+<div class="logo-silver silver10" data-data="player_level">silver2</div>
+<span class="d-chips-long">23,639</span>
+</div>
+<div class="count-box m-moves">
+<div>
+<span>Position</span>
+<strong class="d-position">6153</strong>
+</div>
+<div>
+<span>Win-Loss</span>
+<strong class="d-won-lost" title="149 : 153">149:153</strong>
+</div>
+<div>
+<span>Five - O</span>
+<strong class="d-fiveo" title="11 : 8">11:8</strong>
+</div>
+</div>
+<div class="menu-box m-bets" style="display: none;">
+<div class="red-box not-active-box">
+<div class="slider">
+<a class="minus" href="#">-</a>
+<div class="frame">
+<div class="slider-holder ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false"><div class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 0%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a></div>
+</div>
+<a class="plus" href="#">+</a>
+<input class="min" type="hidden" value="0">
+<input class="max" type="hidden" value="200000">
+<input class="step" type="hidden" value="100">
+<input class="current" type="hidden" value="10000">
+</div>
+<a class="raise" data-action="raise" href="#">
+<span>
+<font class="d-raise-text">RAISE</font><strong class="amount d-raise-amount">234560</strong></span>
+</a>
+</div>
+<span class="call no-call">
+<a data-action="call" href="#">
+<font class="d-call-text">Call</font>
+<strong class="d-call-amount">234568</strong>
+</a>
+</span>
+<span class="fold no-fold">
+<a data-action="fold" href="#">FOLD</a>
+</span>
+</div>
+</div>
+</div>
+<div data-page="bottom_panel" id="footer">
+<div class="footer-chat-box">
+<div class="corner_box">
+<a class="ad_box" data-ad="ad_3" href="https://itunes.apple.com/us/app/five-o-poker-free-live-heads/id670865920?ls=1&amp;mt=8" style="display: inline;" target="_blank">
+<img height="0" src="/images/ads/mobile3.png" width="0" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;">
+</a>
+<div class="play-online-box" style="display: none;">
+<div class="box-holder">
+<div class="box-frame">
+<div class="no-friends">
+<a data-action="facebook_invite" href="#">
+<span>No friends online</span>
+<em>Invite friend</em>
+</a>
+</div>
+<div class="gallery-block" style="display: none;">
+<div class="player-gallery">
+<a class="btn-prev" data-action="scroll_gallery_friend" data-offset="-1" href="#">&lt;</a>
+<div class="mask">
+<div class="slideset">
+<div class="slide">
+<a>
+<img height="82" width="82">
+<span class="photo-mask">&nbsp;</span>
+</a>
+</div>
+</div>
+</div>
+<a class="btn-next" data-action="scroll_gallery_friend" data-offset="1" href="#">&gt;</a>
+</div>
+<div class="text-box">
+<p>
+<a data-action="select_gallery_friend" data-player_id="" href="#">
+Play Online with your
+<strong>FRIEND</strong>
+click here
+</a>
+</p>
+</div>
+</div>
+<div class="choose-game" style="display: none;">
+<ul class="list">
+<li>
+<a data-action="invite scroll_gallery_friend" data-offset="0" data-player_id="" data-table="friends_classic" href="#">
+<img height="104" src="/images/img50.png?50" width="95">
+</a>
+</li>
+<li>
+<a data-action="invite scroll_gallery_friend" data-offset="0" data-player_id="" data-table="friends_pro" href="#">
+<img height="104" src="/images/img51.png?50" width="95">
+</a>
+</li>
+</ul>
+<a class="btn-back" data-action="scroll_gallery_friend" data-offset="0" href="#">back</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="friends-counter-section">
+<div class="select-block" data-elem="friends" style="display: none;">
+<div class="gallery-friends" data-page="friends">
+<div class="gallery-content">
+<a class="link-prev disabled" href="#">prev</a>
+<a class="link-next disabled" href="#">next</a>
+<div class="gallery-holder"><ul>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+<li>
+<a data-action="facebook_invite" href="#">
+<strong class="picture-holder">
+<span class="grey" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">0</span>
+<img height="40" src="/images/img20.jpg?50" width="40">
+</strong>
+</a>
+<a class="alt" data-action="facebook_invite" href="#">
+<em>Invite friend</em>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="select-block" data-elem="outs_counter" style="display: block;">
+<div class="box">
+<div class="holder">
+<div class="frame">
+<div class="counter-block visible">
+<table class="counter-table">
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>J</th>
+<th>Q</th>
+<th>K</th>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="hearts">8</th>
+<td class="h-2 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-3">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-4">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-5">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-6 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-7">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-8">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-9 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-10 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-j active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-q active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-k active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="h-a active">
+<span class="circle">&nbsp;</span>
+</td>
+</tr>
+<tr>
+<th class="clubs">10</th>
+<td class="c-2 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-3">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-4">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-5 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-6 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-7 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-8 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-9 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-10 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-j active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-q active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-k">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="c-a active">
+<span class="circle">&nbsp;</span>
+</td>
+</tr>
+<tr>
+<th class="diamonds">8</th>
+<td class="d-2 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-3">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-4 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-5">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-6 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-7 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-8">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-9 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-10 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-j red">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-q">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-k active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="d-a active">
+<span class="circle">&nbsp;</span>
+</td>
+</tr>
+<tr>
+<th class="spades">11</th>
+<td class="s-2 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-3 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-4 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-5 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-6">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-7 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-8 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-9 active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-10">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-j active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-q active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-k active">
+<span class="circle">&nbsp;</span>
+</td>
+<td class="s-a active">
+<span class="circle">&nbsp;</span>
+</td>
+</tr>
+</tbody>
+</table>
+<a class="ico-question" title="All cards that are invisible to you will have a green light. Once the card is visible, its light is turned off.">?</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="girl girl-2" data-kind="good_call" style="display:none">
+<div class="tooltip-2">
+<div class="top-l">
+<div class="top">
+<div class="bottom-l">
+<div class="bottom">
+<div class="center-l">
+<div class="center">
+<div class="tooltip-content">
+<p>Good call!
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="girl girl-3" data-kind="bad_fold" style="display:none">
+<div class="tooltip-2">
+<div class="top-l">
+<div class="top">
+<div class="bottom-l">
+<div class="bottom">
+<div class="center-l">
+<div class="center">
+<div class="tooltip-content">
+<p>Bad fold.
+<br>
+You could have won!
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="copyrights">
+<a href="http://www.chikigaming.com/#!privacy-policy" target="_blank">Privacy Policy</a>
+•
+<a href="http://www.chikigaming.com/#!service-terms" target="_blank">Terms of Service</a>
+•
+<span>© Chiki Gaming 2014 All rights reserved</span>
+<span class="admin" style="display:none">
+•
+<a class="admin_link" href="/admin/dashboard" target="_blank">Admin Console</a>
+</span>
+</div>
+<iframe class="bottom_maudau_bar ad_bar" frameborder="0" height="72" marginheight="0" marginwidth="0" scrolling="no" style="width:760px; height:75px; display:none" width="100%"></iframe>
+<div class="mobile_promotion">
+<a data-action="open_href" href="https://itunes.apple.com/us/app/five-o-poker-free-live-heads/id670865920?ls=1&amp;mt=8">
+<img height="0" width="0" src="/images/ads/mobile_promotion_1.jpg" style="display: none !important; visibility: hidden !important; opacity: 0 !important; background-position: 0px 0px;">
+</a>
+</div>
+<div class="copyrights admin" style="display:none">
+Testing Tools:
+•
+<a data-action="game_action" data-game_action="debug_make_random_moves" data-upto_move="47" href="#">Make Random Moves</a>
+•
+<a data-action="game_action" data-game_action="debug_win_fiveo" data-upto_move="47" href="#">Win Five-O</a>
+•
+<a data-action="game_action" data-game_action="debug_win_fiveo" data-opponent_wins="true" data-upto_move="47" href="#">Loose Five-O</a>
+•
+<a href="/webapp/logout" data-method="post" rel="nofollow">Logout</a>
+</div>
+</div>
+
+<div class="movable-chip" id="movable-bonus-chip" style="display: none;"></div>
+<div class="m-state-popup light-box" data-page="wait" id="popup-wait" style="display:none">
+<div class="frame">
+<div class="light-holder">
+<div class="spinner-holder waiting-mode will-join-mode" style="display: block;">
+<img class="spinner" height="38" src="/images/spinner.gif?50" width="37">
+</div>
+<div class="heading b-opponent active">
+<strong class="title waiting waiting-mode" style="display: block;">WAITING FOR RESPONSE</strong>
+<span class="waiting-mode" style="display: block;">
+From
+<span class="d-first-name">Taurus</span>
+</span>
+<span class="d-first-name cant-play-mode" style="display: none;">Taurus</span>
+<strong class="title cant-play cant-play-mode" style="display: none;">CAN’T PLAY WITH YOU RIGHT NOW</strong>
+<span class="d-first-name will-join-mode" style="display: none;">Taurus</span>
+<span class="will-join-mode" style="display: none;">is about to finish another game and</span>
+<strong class="title will-join-mode" style="display: none;">WILL JOIN YOU IN A MOMENT</strong>
+</div>
+<div class="section">
+<div class="table b-opponent active">
+<dl>
+<dt>Win-Loss</dt>
+<dd class="d-won-lost" title="3,022 : 2,514">3k:2.5k</dd>
+<dt>Five-0</dt>
+<dd class="d-fiveo" title="84 : 65">84:65</dd>
+</dl>
+<strong class="name">
+<font class="d-first-name">Taurus</font>
+</strong>
+<span class="chips d-chips-long">525,444</span>
+<div class="info-box">
+<strong>Heads-Up Stats</strong>
+<ul>
+<li>
+Total Games
+<strong class="d-games_delta">-0</strong>
+</li>
+<li>
+Five - 0
+<strong class="d-fiveos_delta">-0</strong>
+</li>
+<li>
+Total Chips
+<strong class="d-chips_delta">-0</strong>
+</li>
+</ul>
+</div>
+</div>
+<div class="box-holder">
+<div class="section-box b-opponent active">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">5342</span>
+<img class="d-image" height="40" width="40" src="https://s3.amazonaws.com/fiveopoker-assets/user-profiles/30396_686442967_698.jpg">
+</div>
+</div>
+<div class="section-box b-player">
+<div class="picture-holder">
+<span class="d-position" style="transform: rotate(270deg); transform-origin: 0px 0px 0px; display: block;">6152</span>
+<img class="d-image" height="40" width="40" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xpf1/v/t1.0-1/c0.2.50.50/p50x50/10565187_1667433370147627_2490270950311862841_n.jpg?oh=79ad16f907aee5570f423b737817d889&amp;oe=54AF4A43&amp;__gda__=1420542642_973de8773a93b3713af93f39621fa119">
+</div>
+</div>
+</div>
+</div>
+<div class="btn-holder">
+<a class="light-btn waiting-mode" data-action="lobby" href="#" style="display: inline-block;">
+<span class="cancel">Cancel</span>
+</a>
+<a class="light-btn cant-play-mode" data-action="lobby" href="#" style="display: none;">
+<span class="back-to-lobby2">Back To Lobby</span>
+</a>
+<a class="light-btn will-join-mode" data-action="lobby" href="#" style="display: none;">
+<span class="cancel">Cancel</span>
+</a>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box5" data-page="weekly_contest_rank" id="popup_weekly_contest_rank" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="152" src="/images/img-contest.png?50" width="295">
+<strong class="ranked">
+You are now ranked
+<span class="d-position">56849</span>
+</strong>
+<a class="share3" data-action="facebook_share" data-share_kind="weekly_contest_rank" href="#">share</a>
+<a class="close2" data-action="close_popup" href="#">close</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box4" data-page="weekly_contest_result" id="popup_weekly_contest_result" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="152" src="/images/img-contest.png?50" width="295">
+<strong class="congratulations">Congratulations!</strong>
+<strong class="ranked">
+You ranked
+<span class="d-position">5689</span>
+</strong>
+<a class="share3" data-action="facebook_share" data-share_kind="weekly_contest_result" href="#">share</a>
+<div class="b-bonus">
+<p>Your account has been credited with</p>
+<strong class="bonuses">
+<span class="count d-bonus">2000</span>
+<span class="bonus">BONUS</span>
+</strong>
+</div>
+<a class="close2" data-action="close_popup" href="#">close</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="friends_contest_result" id="popup_friends_contest_result" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="contest" height="152" src="/images/img-contest.png?50" width="295">
+<strong class="congratulations">Congratulations!</strong>
+<strong class="ranked">You ranked above all your friends</strong>
+<strong>in our weekly global contest</strong>
+<strong class="account">
+Your account has been credited with
+<span>
+<em class="d-bonus">2000</em>
+<em class="bonus">bonus!</em>
+</span>
+</strong>
+<a class="share3" data-action="facebook_share" data-share_kind="friends_contest_result" href="#">share</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="like" height="101" src="/images/img-like.png?50" width="295">
+<strong class="thanks-ttl">Thanks for sharing Five-O with your friends.</strong>
+<strong class="gift">
+We've given you a
+<span class="d-chips">400</span>
+chip bonus.
+</strong>
+<p>For every friend that joins Five-O, we will give you another bonus!</p>
+<a class="invite-friend" data-action="facebook_invite" href="#">invite friends</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="like_bonus" id="popup_like_bonus" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="like" height="101" src="/images/img-like.png?50" width="295">
+<strong class="thanks-ttl">Thanks for Liking us.</strong>
+<strong class="thanks-ttl white">We appreciate it!</strong>
+<strong class="gift">
+We've given you a
+<span class="d-chips">400</span>
+chip bonus.
+</strong>
+<p>You can always invite more friends to collect more bonuses.</p>
+<a class="invite-friend" data-action="facebook_invite" href="#">invite friends</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="publish_bonus" id="popup_publish_bonus" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="like" height="101" src="/images/img-like.png?50" width="295">
+<strong class="thanks-ttl">Thank You</strong>
+<strong class="gift">
+We've given you a
+<span class="d-chips">400</span>
+chip bonus.
+</strong>
+<p>You can always invite more friends to collect more bonuses.</p>
+<a class="invite-friend" data-action="facebook_invite" href="#">invite friends</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="subscribe_bonus" id="popup_subscribe_bonus" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="like" height="101" src="/images/img-like.png?50" width="295">
+<strong class="thanks-ttl">Thank You</strong>
+<strong class="gift">
+We've given you a
+<span class="d-chips">400</span>
+chip bonus.
+</strong>
+<p>You can always invite more friends to collect more bonuses.</p>
+<a class="invite-friend" data-action="facebook_invite" href="#">invite friends</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="welcome" id="popup_welcome" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="112" src="/images/img-cards.png?50" width="304">
+<strong class="welcome">Welcome to Five-0 Poker!</strong>
+<strong class="gift2">
+Here's a
+<span class="d-bonus1">4000</span>
+chip bonus
+</strong>
+<div class="ttl-text">
+<p class="b-inviter">
+to thank you for accepting
+<em class="name d-first-name"></em>
+invitation.Plus, you also get a
+<span class="d-bonus2">400</span>
+chip bonus.
+</p>
+<div class="b-like">
+<p class="click-like">
+Click
+</p>
+<div class="fb-like fb_iframe_widget" data-colorscheme="dark" data-href="https://www.facebook.com/pages/Five-O-Poker/247452848648844" data-layout="button_count" data-send="false" data-show-faces="false" data-width="90" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=194045377300689&amp;color_scheme=dark&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FFive-O-Poker%2F247452848648844&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90"><span style="vertical-align: bottom; width: 80px; height: 20px;"><iframe name="f35685fe84" width="90px" height="1000px" frameborder="0" allowtransparency="true" scrolling="no" title="fb:like Facebook Social Plugin" src="https://www.facebook.com/plugins/like.php?app_id=194045377300689&amp;channel=https%3A%2F%2Fs-static.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FKFZn1BJ0LYk.js%3Fversion%3D41%23cb%3Df3d241d15%26domain%3Dwww.fiveopoker.com%26origin%3Dhttps%253A%252F%252Fwww.fiveopoker.com%252Ff23702522%26relation%3Dparent.parent&amp;color_scheme=dark&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FFive-O-Poker%2F247452848648844&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=90" class="" style="border: none; visibility: visible; width: 80px; height: 20px;"></iframe></span></div>
+<p>
+to receive another
+<span>big bonus!</span>
+</p>
+</div>
+</div>
+<div class="link-holder">
+<a class="play-now" data-action="invite_random player_log" data-player_log="play_now">play now</a>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="inviter_bonus" id="popup_inviter_bonus" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img class="img-invite" height="94" src="/images/img-invite.png?50" width="295">
+<strong class="congratulations">Congratulations!</strong>
+<strong class="name b-invitee">
+<font class="d-first-name"></font>
+<span>just joined Five-0 Poker</span>
+</strong>
+<strong class="bonuses">
+<em>Now you get a</em>
+<span class="d-chips">2000</span>
+<span class="bonus">bonus!</span>
+</strong>
+<p>
+Invite more friends and get more
+<span>free chips!</span>
+</p>
+<a class="invite-more" data-action="facebook_invite" href="#">
+<span>invite more friends</span>
+</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="not_enough_chips" id="popup_not_enough_chips" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<strong class="warning">
+<font class="d-message"></font>
+<span>Buy chips now to continue playing for high stakes and boost your chances of winning the weekly contest!</span>
+</strong>
+<a class="buy-now" data-action="buy_chips" href="#">
+<span>buy now</span>
+</a>
+<p>
+<strong>Or collect your special bonus at the lobby when available.</strong>
+</p>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="bought_chips" id="popup_bought_chips" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<strong class="warning green">Thank you for your purchase</strong>
+<strong class="created-account">
+Your account has been credited with
+<br>
+<span class="d-chips">2000</span>
+</strong>
+<a class="play-now" data-action="invite_random" href="#">
+<span>OK</span>
+</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="novice_refill" id="popup_novice_refill" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<div class="bad-news">
+<strong>
+We have given you a
+<span>
+<em class="d-chips">2000</em>
+<span class="bonus">bonus!</span>
+</span>
+</strong>
+<p>let's see if you can make it last this time!</p>
+</div>
+<a class="play-now" data-action="invite_random" href="#">
+<span>play now</span>
+</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="daily_refill" id="popup_daily_refill" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<div class="bad-news">
+<strong>
+We have given you a
+<span>
+<em class="d-chips">2000</em>
+<span class="bonus">bonus!</span>
+</span>
+</strong>
+<p>let's see if you can make it last this time!</p>
+</div>
+<a class="play-now" data-action="invite_random" href="#">
+<span>play now</span>
+</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box big2" data-page="tutorial" id="popup_tutorial" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+<a class="to-table" data-action="invite_random player_log" data-player_log="to_table"></a>
+</div>
+<div class="text-holder">
+<strong class="title"></strong>
+<strong class="ttl">We highly recommend watching our tutorial before you start playing</strong>
+<div>
+<iframe class="video" data-src="https://www.youtube.com/embed/J7-xc2ArmUA?autoplay=1&amp;rel=0" frameborder="0" height="480" width="640"></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" id="popup_no_connection" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<p>
+<strong class="no-chips">Can't reach the game servers.</strong>
+<br>
+Please check your Internet connection
+<br>
+and
+<a data-action="game_reload close_modal" href="#">click here</a>
+to try again.
+</p>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" id="popup-error" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<p>
+We are experiencing a technical problem.
+<br>
+<a href="/reload">Click here</a>
+to try again.
+</p>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" data-page="opponent_not_enough_chips" id="popup_opponent_not_enough_chips" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<strong class="no-chips">Your Opponent does not have enough chips</strong>
+<p>Search for another opponent at the lobby</p>
+<div class="link-holder">
+<a class="to-lobby" data-action="lobby" href="#">
+<span>To Lobby</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" data-page="opponent_offline" id="popup_opponent_offline" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<strong class="no-chips">This opponent has left the game</strong>
+<p>Head to the lobby to choose a different opponent</p>
+<div class="link-holder">
+<a class="to-lobby" data-action="lobby" href="#">
+<span>To Lobby</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" id="popup-forfeit" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<strong class="surrender">surrender?</strong>
+<p>Are you sure you want to leave this game and lose your chips?</p>
+<div class="link-holder">
+<a class="no" data-action="close_modal" href="#">
+<span>NO</span>
+</a>
+<a class="yes" data-action="forfeit_and_lobby" href="#">
+<span>YES</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="m-state-popup light-box general" data-page="wait_random" id="popup-wait-random" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<img class="spinner" height="38" src="/images/spinner.gif?50" width="37">
+<div class="general-text">
+<strong class="waiting random">searching for random opponent</strong>
+<div class="link-holder">
+<a class="cancel" data-action="lobby" href="#">
+<span>Cancel</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="consecutive_wins" id="popup_consecutive_wins" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<div class="bad-news">
+<strong>
+You won
+<font class="d-wins">2</font>
+consecutive games
+<span>
+<em class="d-chips">2000</em>
+<span class="bonus">bonus!</span>
+</span>
+</strong>
+<p>Click below to collect the bonus</p>
+</div>
+<a class="collect" data-action="collect_bonus" data-bonus_id="" data-share_kind="consecutive_wins" href="#"></a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="every_x_wins" id="popup_every_x_wins" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="94" src="/images/img-500.png?50" width="295">
+<div class="bad-news">
+<strong>
+You've reached
+<font class="d-wins">2</font>
+total wins
+<span>
+<em class="d-chips">2000</em>
+<span class="bonus">bonus!</span>
+</span>
+</strong>
+<p>Click below to collect the bonus</p>
+</div>
+<a class="collect" data-action="collect_bonus" data-bonus_id="" data-share_kind="every_x_wins" href="#"></a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box" data-page="top_x" id="popup_top_x" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<strong class="top-count d-top">2000</strong>
+<div class="top-text">
+<strong class="congratulations">Congratulations!</strong>
+<strong class="d-text">You are now one of the top 20 players in the world!</strong>
+<br>
+<p>Share this Awesome Achievement!</p>
+</div>
+<a class="share3" data-action="facebook_share" data-share_kind="top_x" href="#">share</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box6" data-page="new_features" id="popup_new_features" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo">5:0 poker</strong>
+</div>
+<img height="112" src="/images/img28.png?50" width="304">
+<strong class="five-poker">Five-O Poker</strong>
+<strong class="new">new!</strong>
+<div class="text-holder">
+<strong class="ttl">Introducing the Outs Counter</strong>
+<div>We’ve all been there: you’ve got a few seconds left to place a bet
+and you’re scanning a table full of cards to figure out how many outs you have...
+STRESS! So, to make your lives easier, we’ve built a new feature that will save you time
+and improve your game performance.
+<br>
+This new premium feature will show you what cards are already out on the table
+and which ones are still hiding in the deck. Although anyone could figure this out
+by just looking at the table, the Outs Counter helps you visualize this better,
+save crucial time, and improve your performance.  The green lights indicate cards
+that are not on the table yet, and if the green light is off, the card is already on the table.
+<br>
+This means you can play a more educated game – instead of taking risky bets,
+you can easily count how many outs you have, and therefore how likely you are to win the hand or game.
+<br>
+To launch this new premium feature, we are giving every single player a two day trial.
+After that, you can purchase as many days of using the Outs Counter as you want.
+<br>
+Try it out, you’ll see the difference straight away!
+<br><br>
+Happy gaming,
+<br>
+The Five-O Team
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box7 general" data-page="promotion" data-ribbon="" id="popup_promotion" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<span class="ribbon"></span>
+<img height="116" src="/images/img30.png?50" width="121">
+</div>
+<div class="general-text">
+<p class="content"></p>
+</div>
+<a class="close2" data-action="close_popup" href="#">close</a>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" id="popup_no_gift" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div class="general-text">
+<p>You have already sent a gift to this friend during the last 24 hours</p>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="popup popup-send" id="popup_send_gift" style="display:none">
+<div class="container">
+<span class="t">
+<span class="t-l"></span>
+<span class="t-r"></span>
+</span>
+<div class="c">
+<div class="holder">
+<span class="text-send">SEND YOUR FRIENDS FIVE-O CHIPS!</span>
+<p>How would you like to indulge your friend?</p>
+<div class="twocolumns">
+<div class="column">
+<a data-gift="simple" href="#">
+<img height="121" src="/images/img29.png?50" width="111">
+</a>
+<div class="entry-content">
+<span class="number">1000</span>
+<span class="text-chips">CHIPS</span>
+</div>
+</div>
+<div class="aside">
+<a data-gift="random" href="#">
+<img height="121" src="/images/img30.png?50" width="116">
+</a>
+<div class="entry-content">
+<span class="text-surprise">SURPRISE</span>
+<p>
+Number of chips varies.
+<br>
+It could be high,  it could be low,
+<br>
+<span>take a chance!</span>
+</p>
+</div>
+</div>
+</div>
+<strong class="logo">5:0 poker</strong>
+<a class="close" data-action="close_popup" href="#">close</a>
+</div>
+</div>
+<span class="b">
+<span class="b-l"></span>
+<span class="b-r"></span>
+</span>
+</div>
+</div>
+<div class="light-box light-box7" data-page="level" id="popup_level" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<a class="close" data-action="close_popup" href="#">close</a>
+<div class="text-section">
+<strong class="logo">5:0 poker</strong>
+<h2 class="text-congratulations">CONGRATULATIONS</h2>
+<p>You are now</p>
+<a class="logo-silver silver2" data-elem="level">level</a>
+<p><span class="mark">Here is a
+<font class="d-chips">2000</font>
+chips bonus</span>to celebrate this awesome achievement</p>
+<a class="btn-collect" data-action="collect_bonus" data-bonus_id="" data-share_kind="level" href="#">COLLECT</a>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box7" data-page="mission" id="popup_mission" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<a class="close" data-action="close_popup" href="#">close</a>
+<span class="text-mission-completed">mission completed</span>
+<div class="text-area">
+<img class="alignright" height="260" src="/images/img35.png?50" width="169">
+<div class="text-section">
+<strong class="logo">5:0 poker</strong>
+<h2 class="text-you-are-good">You ARE GOOD</h2>
+<p><strong class="big-text">Here is</strong><span class="mark big-text"><font class="d-chips">2000</font>
+chips bonus</span>for this great achievement!</p>
+<a class="btn-collect" data-action="collect_bonus" data-bonus_id="" data-share_kind="mission" href="#">COLLECT</a>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box general" id="popup_rate_us" style="display:none">
+<div class="frame">
+<div class="light-holder2">
+<div class="heading">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="logo align-center">5:0 poker</strong>
+</div>
+<div style="padding: 20px 0 20px 0">
+<img height="148" src="/images/misc/bg-rate-us.png?50" width="377">
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box9" id="popup_leaderboard" style="display:none">
+<div class="frame">
+<div class="light-holder">
+<a class="close" data-action="close_popup" href="#">close</a>
+<div class="heading">
+<strong class="title" title="Each week, we give chips to the winner of the Weekly Global Challenge. To win, you need to collect more chips than the other Five-O Poker players."></strong>
+<ul class="timer b-contest-timer">
+<li>
+<em>&nbsp;</em>
+<span>
+<font class="d-days">3</font>
+</span>
+d
+</li>
+<li>
+<em>&nbsp;</em>
+<span>
+<font class="d-hours">22</font>
+</span>
+h
+</li>
+<li>
+<em>&nbsp;</em>
+<span>
+<font class="d-mins">23</font>
+</span>
+m
+</li>
+<li>
+<em>&nbsp;</em>
+<span>
+<font class="d-secs">25</font>
+</span>
+s
+</li>
+</ul>
+</div>
+<div class="scroll-box">
+<div class="leaderboard scroll-holder">
+<ul class="nav">
+<li class="active">
+<a data-page="global" href="#">Global</a>
+</li>
+<li>
+<a data-page="friends" href="#">Friends</a>
+</li>
+<li>
+<a data-page="find-me" href="#">Find me</a>
+</li>
+</ul>
+<div class="scroll-list">
+<div class="vscrollable">
+</div>
+</div>
+</div>
+</div>
+<div class="b-last-contest-winner_disabled" style="display:none">
+<strong class="ttl">last week winner</strong>
+<div class="last-winner">
+<div class="frame">
+<div class="holder">
+<div class="picture-holder">
+<img class="d-image" height="21" width="23">
+</div>
+<strong class="d-first-name"></strong>
+<span>
+won:
+<font class="d-winner-chips">4563293</font>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box10" data-page="mobile" id="popup_mobile" style="display:none">
+<div class="frame">
+<div class="light-holder3">
+<a class="close" data-action="close_popup" href="#">close</a>
+<strong class="title">Five-o Poker Anytime, Anywhere!</strong>
+<div class="boxes">
+<div class="box">
+<img alt="iPhone" src="/images/iphone-img.png?50">
+<span class="btn">
+<a data-action="open_href player_log" data-player_log="iphone" href="https://itunes.apple.com/us/app/five-o-poker-free-live-heads/id670865920?ls=1&amp;mt=8">iPhone download</a>
+</span>
+<img alt="app-store" class="app-ad" src="/images/app-store-ad.png?50">
+</div>
+<div class="box">
+<img alt="iPad" src="/images/ipad-img.png?50">
+<span class="btn">
+<a data-action="open_href player_log" data-player_log="ipad" href="https://itunes.apple.com/us/app/five-o-poker-hd-five-o-poker/id682227818?ls=1&amp;mt=8">iPad download</a>
+</span>
+<img alt="app-store" class="app-ad" src="/images/app-store-ad.png?50">
+</div>
+</div>
+</div>
+</div>
+<div class="light-box-b">&nbsp;</div>
+</div>
+<div class="light-box light-box11" data-page="ask_friends" id="popup_ask_friends" style="display:none">
+<a class="close" data-action="close_popup" href="#">close</a>
+<div class="boxes">
+<div class="box">
+<img src="/images/img52.png?50">
+<span class="ask-friends">ask friends</span>
+<p>Get More chips by asking your friends on Facebook to help</p>
+<a class="ask-btn" data-action="send_gift" href="#">ask friend</a>
+</div>
+</div>
+</div>
+<div class="light-box light-box12" data-page="no_chips" id="popup_no_chips" style="display:none">
+<a class="close" data-action="close_popup show_promo_box" href="#">close</a>
+<div class="boxes">
+<div class="box">
+<img src="/images/img53.png?50">
+<span class="no-more-chips">no more chips</span>
+<span>Time left to Special Bonus</span>
+<div class="time-box">23:45</div>
+<a class="ask-btn" data-action="send_gift" href="#">ask friend</a>
+<a class="get-chips" data-action="buy_chips" href="#">get chips now</a>
+</div>
+</div>
+</div>
+<div data-page="offer" id="popup_offer" style="display:none">
+<img class="banner">
+<div class="description">get <span class="chips"></span> chips for only <span class="price"></span></div>
+<div class="time_left">Expires in <span data-value=""></span></div>
+<div class="packages_left"><span data-value=""></span> packages left</div>
+<a class="close" data-action="close_popup" href="#">close</a>
+<a class="buy" data-action="buy_offer clear_popups close_modal" data-chips="" data-name="" data-packages_left="" data-price_usd="" data-product_url="" href="#">buy</a>
+</div>
+
+
+<script src="/javascripts/g/common.js?1412589058" type="text/javascript"></script>
+<script>
+  //<![CDATA[
+    $.ajax({
+      url: "/webapp/login" + location.search,
+      type: 'post',
+      dataType: 'json',
+      timeout: 20000,
+      complete: function(xhr, text_status) {
+        $(document).ready(function() {
+          setTimeout(function() {
+            startGame(xhr.responseText, xhr.status);
+          }, 0);
+        });
+      }
+    });
+  //]]>
+</script>
+
+<script src="/javascripts/g/app_lib.js?1412589022" type="text/javascript"></script>
+<script src="/javascripts/g/app.js?1412589059" type="text/javascript"></script>
+<div id="pubnub" ssl="on" sub-key="sub-5c5ce8e3-5ca8-11e1-8460-09f097d0401d" style="position: absolute; top: -1000px;"></div>
+<script src="https://cdn.pubnub.com/pubnub-3.5.48.min.js" type="text/javascript"></script>
+
+<script>
+  //<![CDATA[
+    var _sa1 = _sa1 || [];
+    _sa1.push(['initialize', "bd63e5cd-b8d3-4b2c-a919-2c22d9bbbdb1"]);
+    
+    (function () {
+      var sa1 = document.createElement('script');
+      sa1.type = 'text/javascript';
+      sa1.async = true;
+      sa1.src = '//admin.appnext.com/tki.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(sa1, s);
+    })();
+  //]]>
+</script>
+
+
+
+<script>
+  //<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-26594624-1']);
+    _gaq.push(['_setDomainName', 'fiveopoker.com']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  //]]>
+</script>
+
+
+
+
+<iframe id="ifrm1" style="position: absolute; width: 1px; height: 1px; left: -9999px;"></iframe><iframe id="ifrms" src="https://admin.appnext.com/1.aspx?type=i&amp;banner=&amp;embed=&amp;bannerapp=&amp;embedapp=bd63e5cd-b8d3-4b2c-a919-2c22d9bbbdb1" style="position: absolute; width: 1px; height: 1px; left: -9999px;"></iframe><script src="https://js-agent.newrelic.com/nr-476.min.js"></script></body></html>

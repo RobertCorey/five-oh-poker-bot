@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Five Column Poker Bot",
+  "version": "1.0",
+  "description": "An AI that plays five column poker games",
+
+  "permissions": [
+    "http://127.0.0.1:8080/api"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.fiveopoker.com/*"],
+      "js": [
+      "jquery-1.11.1.min.js",
+      "scraperBot.js"
+      ],
+      "all_frames": true
+    }
+  ]
+}

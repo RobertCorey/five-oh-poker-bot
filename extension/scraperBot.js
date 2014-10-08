@@ -21,7 +21,6 @@
     for (var i = 0; i < cards.length; i++) {
       var current = $(cards[i]);
       if (current.css('display') !== 'none') {
-        // console.log(current.attr('class').split(' ')[1]);
         convertedHand.push(convertCard(current.attr('class').split(' ')[1]));
       }
     }
@@ -29,13 +28,12 @@
   }
 
   function getHands (hands, hero) {
-    var converted = [];
-    var foo = [];
+    converted = [];
     for (var i = 0; i < hands.length; i++) {
       var current = $(hands[i]);
-      foo[i] = convertPlayerHand(current);
+      converted.push(convertPlayerHand(current));
     }
-    return foo;
+    return converted;
   }
 
   function prunePlayerHands (hands) {
@@ -47,9 +45,10 @@
         count += 1;
       }
     });
-
+    console.log(count);
     if (count !== 5) {
       for (var i = 0; i < hands.length; i++) {
+        console.log(hands[i].length);
         if (hands[i].length === max) {
           hands[i] =  null;
         }
@@ -58,16 +57,20 @@
     return hands;
   }
 
+  var locked = false;
   
   function mainLoop () {
     var playerCard = $('.cell.ui-draggable');
-
     if (playerCard.length) {
       playerCard = convertCard($(playerCard[0]).attr('class').split(' ')[1]);
     } else {
       return;
     }
-
+    if (locked) {
+      return;
+    } else {
+      locked = true;
+    }
     var deck = buildDeck($('.counter-table tbody tr td.active'));
     var playerHands = getHands($('.player-card-row .valid-move'), true);
     playerHands = prunePlayerHands(playerHands);
@@ -78,19 +81,21 @@
       'opponentHands': opponentHands,
       'playerCard': playerCard
     };
-    console.log('game model', gameModel);
-    $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
-      console.log(data);
+    console.log(gameModel);
+    $.post('http://127.0.0.1:8080/api', gameModel, function (data) {
+      clickColumn(data.move);
+      locked = false;
     });
   }
-
-  // setInterval(function() {
+  function clickColumn (column) {
+    var selectorStr = '[data-move="' + column + '"]';
+    var jColumn = $(selectorStr)[0];
+    clickColumn('Clicking Column ', column);
+    jColumn.click();
+  }
+  function fireAction () {
+    var moveOptions = $('[data-move]');
+  }
+  setInterval(function() {
     mainLoop();
-  // }, 10000);
-
-  var selectors = {
-    pRow: '.player-card-row .valid-move',
-    oRow: '.opponent-card-row .column',
-    pCard: '.cell.ui-draggable',
-    deck: '.counter-table tbody tr td.active',
-  };
+  }, 2000);
