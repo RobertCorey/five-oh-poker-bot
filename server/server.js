@@ -77,6 +77,7 @@ ShotCaller.prototype.callShot = function (verbose) {
       maxPos = i;
     }
   }
+  console.log('max difference is at', maxPos);
   return maxPos;
 };
 
@@ -118,7 +119,7 @@ router.post('/', function (req, res) {
     model.deck,
     model.playerCard
   );
-  var move = ai.callShot(false);
+  var move = ai.callShot(true);
   res.json({
     'move': move
   });

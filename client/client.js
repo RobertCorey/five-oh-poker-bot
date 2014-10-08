@@ -21,7 +21,6 @@
     for (var i = 0; i < cards.length; i++) {
       var current = $(cards[i]);
       if (current.css('display') !== 'none') {
-        // console.log(current.attr('class').split(' ')[1]);
         convertedHand.push(convertCard(current.attr('class').split(' ')[1]));
       }
     }
@@ -29,33 +28,33 @@
   }
 
   function getHands (hands, hero) {
-    var converted = [];
     var foo = [];
     for (var i = 0; i < hands.length; i++) {
       var current = $(hands[i]);
-      foo[i] = convertPlayerHand(current);
+      var currentConverted = convertPlayerHand(current);
+      foo[i] = currentConverted;
     }
     return foo;
   }
 
   function prunePlayerHands (hands) {
+    var copy = hands.slice(0);
     var max = 0;
     var count = 0;
-    hands.forEach(function (hand) {
+    copy.forEach(function (hand) {
       if ( hand.length >= max) {
         max = hand.length;
         count += 1;
       }
     });
-
     if (count !== 5) {
-      for (var i = 0; i < hands.length; i++) {
-        if (hands[i].length === max) {
-          hands[i] =  null;
+      for (var i = 0; i < copy.length; i++) {
+        if (copy[i].length === max) {
+          copy[i] =  null;
         }
       }
     }
-    return hands;
+    return copy;
   }
 
   
@@ -70,7 +69,8 @@
 
     var deck = buildDeck($('.counter-table tbody tr td.active'));
     var playerHands = getHands($('.player-card-row .valid-move'), true);
-    playerHands = prunePlayerHands(playerHands);
+    console.log(playerHands);
+    // var prunedHands = prunePlayerHands(playerHands);
     var opponentHands = getHands($('.opponent-card-row .column'));
     var gameModel = {
       'deck': deck,
@@ -78,7 +78,6 @@
       'opponentHands': opponentHands,
       'playerCard': playerCard
     };
-    console.log('game model', gameModel);
     $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
       console.log(data);
     });
