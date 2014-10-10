@@ -46,6 +46,26 @@ ShotCaller.prototype.printDeck = function () {
       return 1;
     } else if (a[1] < b[1]) {
       return -1;
+    } else if (a === 'a') {
+      return 1;
+    } else if (b === 'a') {
+      return -1;
+    } else if (a === 'k') {
+      return 1;
+    } else if (b === 'k') {
+      return -1;
+    } else if (a === 'q') {
+      return 1;
+    } else if (b === 'q') {
+      return -1;
+    } else if (a === 'j') {
+      return 1;
+    } else if (b === 'j') {
+      return -1;
+    } else if (a === 'T') {
+      return 1;
+    } else if (b === 'T') {
+      return -1;
     } else if (a > b) {
       return 1;
     } else {
