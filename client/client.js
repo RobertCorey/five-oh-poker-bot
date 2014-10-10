@@ -66,10 +66,11 @@ function mainLoop () {
   };
   console.log(gameModel);
   $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
-    console.log(data);
+    var choice = parseInt(data.move, 10);
+    $('.player-card-row .column')[choice].click();
   });
 }
-var cancelCode = setTimeout(
+var cancelCode = setInterval(
 function() {
   mainLoop();
 }, 5000);
