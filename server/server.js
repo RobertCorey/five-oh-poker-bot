@@ -143,6 +143,9 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
 };
 
 ShotCaller.prototype.callShot = function (verbose) {
+  if (this.turn === 4) {
+    return 'I don\t work for late game yet';
+  }
   verbose = true;
   if (verbose) { this.printModel(); }
 
