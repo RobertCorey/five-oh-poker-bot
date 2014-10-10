@@ -28,13 +28,11 @@ function convertHand (hand) {
 }
 
 function getHands (hands) {
-  console.log('converting raw hands');
   var handsArray = [];
   for (var i = 0; i < hands.length; i++) {
     var current = $(hands[i]);
     handsArray.push(convertHand(current));
   }
-  console.log(handsArray);
   return handsArray;
 }
 
@@ -66,9 +64,8 @@ function mainLoop () {
     'opponentHands': opponentHands,
     'playerCard': playerCard
   };
-  console.log(gameModel);
-  // $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
-    // console.log(data);
-  // });
+  $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
+    console.log(data);
+  });
 }
 mainLoop();
