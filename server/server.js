@@ -7,7 +7,7 @@ var ShotCaller = function (pHand, oHand, deck, pCard) {
   this.oHands = oHand;
   this.deck = deck;
   this.pCard = pCard;
-  this.round = _.max(this.pHands, function (item) {return item.length;});
+  this.turn = _.max(this.pHands, function (item) {return item.length;}).length - 1;
 };
 
 ShotCaller.prototype.printCard = function(card) {
@@ -41,6 +41,8 @@ ShotCaller.prototype.printHands = function (hands, title) {
 };
 //Todo print missed ones, sorting fucks up on paint cards
 ShotCaller.prototype.printDeck = function () {
+  console.log('Remaining Cards: ');
+  console.log('-------------------------------------------------------------');
   var sortedDeck = this.deck.sort(function (a, b) {
     if (a[1] > b[1]) {
       return 1;
@@ -84,6 +86,13 @@ ShotCaller.prototype.printDeck = function () {
     row += that.printCard(card);
   });
   console.log(row);
+};
+
+ShotCaller.prototype.printModel = function() {
+  this.printHands(this.oHands, 'Villian Hands');
+  this.printHands(this.pHands, 'Player Hands');
+  console.log('Player Card: ', this.printCard(this.pCard));
+  this.printDeck(); 
 };
 
 ShotCaller.prototype._isFirstWinner = function (aHand, bHand) {
@@ -130,34 +139,33 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
 };
 
 ShotCaller.prototype.callShot = function (verbose) {
-  this.printDeck();
-  // this.printHands(this.oHands, 'Villian Hands');
-  // this.printHands(this.pHands, 'Player Hands');
-  // console.log('Player Card: ', this.printCard(this.pCard));
-  // verbose = false;
-  // var matchups =  [];
-  // var matchupsWithCard = [];
-  // var max, maxPos;
-  // for (var i = 0; i < this.pHands.length; i++) {
+  verbose = true;
+  if (verbose) { this.printModel(); }
 
-  //   var withCard = this._simulateRounds(this.pHands[i], this.oHands[i], true);
-  //   var noCard = this._simulateRounds(this.pHands[i], this.oHands[i]);
-  //   var diff = withCard - noCard;
-  //   if (verbose) {
-  //     console.log(i , 'Player Hand: ', this.pHands[i], 'Opp Hand: ', this.oHands[i]);
-  //     console.log('Player Card: ', this.pCard);
-  //     console.log('With Card: ', withCard, '%');
-  //     console.log('Without Card: ', noCard, '%');
-  //     console.log('Difference: ', diff);
-  //     console.log('--------------------------------------------------------------------\n');
-  //   }
-  //   if (diff > max || !max) {
-  //     max = diff;
-  //     maxPos = i;
-  //   }
-  // }
-  // console.log('max difference is at', maxPos);
-  // return maxPos;
+  var matchups =  [];
+  var matchupsWithCard = [];
+  var max, maxPos;
+  for (var i = 0; i < this.pHands.length; i++) {
+    // if the hand has already been given a card this turn continue
+    if (this.pHands[i].length > this.turn) { continue; }
+    var withCard = this._simulateRounds(this.pHands[i], this.oHands[i], true);
+    var noCard = this._simulateRounds(this.pHands[i], this.oHands[i]);
+    var diff = withCard - noCard;
+    if (verbose) {
+      console.log(i , 'Player Hand: ', this.pHands[i], 'Opp Hand: ', this.oHands[i]);
+      console.log('Player Card: ', this.pCard);
+      console.log('With Card: ', withCard, '%');
+      console.log('Without Card: ', noCard, '%');
+      console.log('Difference: ', diff);
+      console.log('--------------------------------------------------------------------\n');
+    }
+    if (diff > max || !max) {
+      max = diff;
+      maxPos = i;
+    }
+  }
+  console.log('max difference is at', maxPos);
+  return maxPos;
 };
 
 
@@ -200,7 +208,7 @@ router.post('/', function (req, res) {
   );
   var move = ai.callShot(false);
   res.json({
-    'move': true
+    'move': move
   });
 });
 // REGISTER OUR ROUTES -------------------------------
