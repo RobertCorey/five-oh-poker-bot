@@ -64,6 +64,7 @@ function mainLoop () {
     'opponentHands': opponentHands,
     'playerCard': playerCard
   };
+  console.log(gameModel);
   $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
     console.log(data);
   });

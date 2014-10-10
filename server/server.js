@@ -1,5 +1,6 @@
 var pokerEvaluator = require('poker-evaluator');
 var _ = require('lodash');
+var colors = require('colors');
 
 var ShotCaller = function (pHand, oHand, deck, pCard) {
   this.pHands = pHand;
@@ -9,20 +10,60 @@ var ShotCaller = function (pHand, oHand, deck, pCard) {
   this.round = _.max(this.pHands, function (item) {return item.length;});
 };
 
-ShotCaller.prototype.printHands = function(hands, title) {
-  console.log(title);
+ShotCaller.prototype.printCard = function(card) {
+  var str = card + ' ';
+  switch (card[1]) {
+    case 'h':
+      return str.red;
+    case 'd':
+      return str.blue;
+    case 'c':
+      return str.green;
+    case 's':
+      return str.black;
+  }
+};
+
+ShotCaller.prototype.printHands = function (hands, title) {
+  console.log('\n' + title);
   console.log('-------------------------------------------------------------');
   for (var i = 0; i < 5; i++) {
     var row = '';
     for (var j = 0; j < hands.length; j++) {
       if (hands[j][i]) {
-        row += hands[j][i] = ' ';
+        row += this.printCard(hands[j][i]);
       } else {
-        row += 'xx ';
+        row += 'xx '.yellow;
       }
     }
     console.log(row);
   }
+};
+//Todo print missed ones, sorting fucks up on paint cards
+ShotCaller.prototype.printDeck = function () {
+  var sortedDeck = this.deck.sort(function (a, b) {
+    if (a[1] > b[1]) {
+      return 1;
+    } else if (a[1] < b[1]) {
+      return -1;
+    } else if (a > b) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+  var currentSuit = 'c',
+  row = '',
+  that = this;
+  _.forEach(this.deck, function (card) {
+    if (currentSuit !== card[1]) {
+      console.log(row);
+      row = '';
+      currentSuit = card[1];
+    }
+    row += that.printCard(card);
+  });
+  console.log(row);
 };
 
 ShotCaller.prototype._isFirstWinner = function (aHand, bHand) {
@@ -69,7 +110,10 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
 };
 
 ShotCaller.prototype.callShot = function (verbose) {
-  this.printHands(this.pHands);
+  this.printDeck();
+  // this.printHands(this.oHands, 'Villian Hands');
+  // this.printHands(this.pHands, 'Player Hands');
+  // console.log('Player Card: ', this.printCard(this.pCard));
   // verbose = false;
   // var matchups =  [];
   // var matchupsWithCard = [];
