@@ -142,9 +142,17 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
   return Math.round( (playerWin / NUM_ROUNDS) * 100);
 };
 
+ShotCaller.prototype.cleanOHands = function () {
+  _.forEach(this.oHands, function (item) {
+    if (item.length === 5) {
+      item.splice(4, 1);
+    }
+  });
+};
+
 ShotCaller.prototype.callShot = function (verbose) {
   if (this.turn === 4) {
-    return 'I don\t work for late game yet';
+    this.cleanOHands();
   }
   verbose = true;
   if (verbose) { this.printModel(); }
