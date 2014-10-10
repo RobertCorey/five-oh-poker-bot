@@ -69,4 +69,7 @@ function mainLoop () {
     console.log(data);
   });
 }
-mainLoop();
+var cancelCode = setTimeout(
+function() {
+  mainLoop();
+}, 5000);
