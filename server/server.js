@@ -7,7 +7,7 @@ var ShotCaller = function (pHand, oHand, deck, pCard) {
   this.oHands = oHand;
   this.deck = deck;
   this.pCard = pCard;
-  this.turn = _.max(this.pHands, function (item) {return item.length;}).length - 1;
+  this.turn = _.min(this.pHands, function (item) {return item.length;}).length;
 };
 
 ShotCaller.prototype.printCard = function(card) {
@@ -131,7 +131,11 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
     if (this._isFirstWinner(pHand, oHand)) {
       playerWin += 1;
     }
+    pHand = null;
+    oHand = null;
+    deck = null;
   }
+
   if (useCard) {
     pHandOriginal.pop();
   }
@@ -147,7 +151,7 @@ ShotCaller.prototype.callShot = function (verbose) {
   var max, maxPos;
   for (var i = 0; i < this.pHands.length; i++) {
     // if the hand has already been given a card this turn continue
-    if (this.pHands[i].length > this.turn) { continue; }
+    if (this.pHands[i].length > this.turn) {continue;}
     var withCard = this._simulateRounds(this.pHands[i], this.oHands[i], true);
     var noCard = this._simulateRounds(this.pHands[i], this.oHands[i]);
     var diff = withCard - noCard;
