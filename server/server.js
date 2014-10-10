@@ -52,12 +52,12 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
 };
 
 ShotCaller.prototype.callShot = function (verbose) {
-  console.log(this.pHands);
+  verbose = false;
   var matchups =  [];
   var matchupsWithCard = [];
   var max, maxPos;
   for (var i = 0; i < this.pHands.length; i++) {
-    if (!this.pHands[i]) {
+    if (this.pHands[i] === 'undefined') {
       break; 
     }
 
@@ -119,9 +119,10 @@ router.post('/', function (req, res) {
     model.deck,
     model.playerCard
   );
-  var move = ai.callShot(true);
+  console.log(model);
+  var move = ai.callShot(false);
   res.json({
-    'move': move
+    'move': true
   });
 });
 // REGISTER OUR ROUTES -------------------------------

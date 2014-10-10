@@ -31,8 +31,9 @@
     var foo = [];
     for (var i = 0; i < hands.length; i++) {
       var current = $(hands[i]);
+      var index = parseInt(current.attr('data-move'), 10);
       var currentConverted = convertPlayerHand(current);
-      foo[i] = currentConverted;
+      foo[index] = currentConverted;
     }
     return foo;
   }
