@@ -29,6 +29,7 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
   if (useCard) {
     pHandOriginal.push(this.pCard);
   }
+
   for (var i = 0; i < NUM_ROUNDS; i++) {
     var pHand = pHandOriginal.slice(0);
     var oHand = oHandOriginal.slice(0);
@@ -51,11 +52,15 @@ ShotCaller.prototype._simulateRounds = function (pHandOriginal, oHandOriginal, u
 };
 
 ShotCaller.prototype.callShot = function (verbose) {
+  verbose = false;
   var matchups =  [];
   var matchupsWithCard = [];
   var max, maxPos;
   for (var i = 0; i < this.pHands.length; i++) {
-    if (!this.pHands[i]) { break; }
+    if (this.pHands[i] === 'undefined') {
+      break; 
+    }
+
     var withCard = this._simulateRounds(this.pHands[i], this.oHands[i], true);
     var noCard = this._simulateRounds(this.pHands[i], this.oHands[i]);
     var diff = withCard - noCard;
@@ -72,6 +77,7 @@ ShotCaller.prototype.callShot = function (verbose) {
       maxPos = i;
     }
   }
+  console.log('max difference is at', maxPos);
   return maxPos;
 };
 
@@ -79,14 +85,24 @@ ShotCaller.prototype.callShot = function (verbose) {
 /*
 * Server Logic
 */
+var https = require('https');
+var fs = require('fs');
 var express    = require('express');
 var app        = express();
 var bodyParser = require('body-parser');
 
+var hskey = fs.readFileSync('https/hacksparrow-key.pem');
+var hscert = fs.readFileSync('https/hacksparrow-cert.pem');
+
+var options = {
+    key: hskey,
+    cert: hscert
+};
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;    // set our port
+var port = process.env.PORT || 9999;    // set our port
 
 var router = express.Router();        
 
@@ -97,19 +113,20 @@ router.all('/', function(req, res, next) {
 });
 router.post('/', function (req, res) {
   var model = req.body;
-  console.log(req.body);
   var ai = new ShotCaller(
     model.playerHands,
     model.opponentHands,
     model.deck,
     model.playerCard
   );
-  var move = ai.callShot(true);
-  console.log(move);
-  res.status(200).end();
+  console.log(model);
+  var move = ai.callShot(false);
+  res.json({
+    'move': true
+  });
 });
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
 app.use('/api', router);
-app.listen(port);
 console.log('Magic happens on port ' + port);
+https.createServer(options, app).listen(port);

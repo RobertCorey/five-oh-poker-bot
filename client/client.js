@@ -28,54 +28,50 @@
   }
 
   function getHands (hands, hero) {
-    converted = [];
+    var foo = [];
     for (var i = 0; i < hands.length; i++) {
       var current = $(hands[i]);
-      converted.push(convertPlayerHand(current));
+      var index = parseInt(current.attr('data-move'), 10);
+      var currentConverted = convertPlayerHand(current);
+      foo[index] = currentConverted;
     }
-    return converted;
+    return foo;
   }
 
   function prunePlayerHands (hands) {
+    var copy = hands.slice(0);
     var max = 0;
     var count = 0;
-    hands.forEach(function (hand) {
+    copy.forEach(function (hand) {
       if ( hand.length >= max) {
         max = hand.length;
         count += 1;
       }
     });
-    console.log(count);
     if (count !== 5) {
-      for (var i = 0; i < hands.length; i++) {
-        console.log(hands[i].length);
-        if (hands[i].length === max) {
-          hands[i] =  null;
+      for (var i = 0; i < copy.length; i++) {
+        if (copy[i].length === max) {
+          copy[i] =  null;
         }
       }
     }
-    return hands;
+    return copy;
   }
 
-  var locked = false;
-  ScraperBot.prototype.init = function(arguments) {
-    // body...
-  }
+  
   function mainLoop () {
     var playerCard = $('.cell.ui-draggable');
+
     if (playerCard.length) {
       playerCard = convertCard($(playerCard[0]).attr('class').split(' ')[1]);
     } else {
       return;
     }
-    if (locked) {
-      return;
-    } else {
-      locked = true;
-    }
+
     var deck = buildDeck($('.counter-table tbody tr td.active'));
     var playerHands = getHands($('.player-card-row .valid-move'), true);
-    playerHands = prunePlayerHands(playerHands);
+    console.log(playerHands);
+    // var prunedHands = prunePlayerHands(playerHands);
     var opponentHands = getHands($('.opponent-card-row .column'));
     var gameModel = {
       'deck': deck,
@@ -83,22 +79,18 @@
       'opponentHands': opponentHands,
       'playerCard': playerCard
     };
-    console.log(gameModel);
-    $.post('http://127.0.0.1:8080/api', gameModel, function (data) {
-
-      locked = false;
+    $.post('https://127.0.0.1:9999/api', gameModel, function (data) {
+      console.log(data);
     });
   }
 
-  mainLoop();
+  // setInterval(function() {
+    mainLoop();
+  // }, 10000);
+
   var selectors = {
     pRow: '.player-card-row .valid-move',
     oRow: '.opponent-card-row .column',
     pCard: '.cell.ui-draggable',
     deck: '.counter-table tbody tr td.active',
-  };
-
-  var ScraperBot = function (selectors, interval) {
-    this.selectors = selectors;
-    this.interval = interval;
   };
