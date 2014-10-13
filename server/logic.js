@@ -8,6 +8,17 @@ var ShotCaller = function (pHand, oHand, deck, pCard) {
   this.deck = deck;
   this.pCard = pCard;
   this.turn = _.min(this.pHands, function (item) {return item.length;}).length;
+  this.round = this.countCards();
+};
+
+ShotCaller.prototype.countCards = function () {
+  var count = 0;
+  _.forEach(this.pHands, function (hand) {
+    _.forEach(hand, function (card) {
+      count += 1;
+    });
+  });
+  return count;
 };
 
 ShotCaller.prototype.printCard = function(card) {
@@ -150,36 +161,31 @@ ShotCaller.prototype.cleanOHands = function () {
   });
 };
 
-ShotCaller.prototype.callShot = function (verbose) {
+
+ShotCaller.prototype.callShot = function () {
   if (this.turn === 4) {
     this.cleanOHands();
   }
-  verbose = true;
-  if (verbose) { this.printModel(); }
-
+  console.log('turn', this.turn);
+  console.log('round', this.round);
   var matchups =  [];
   var matchupsWithCard = [];
-  var max, maxPos;
+  var diff = [];
   for (var i = 0; i < this.pHands.length; i++) {
+    var weighted;
     // if the hand has already been given a card this turn continue
     if (this.pHands[i].length > this.turn) {continue;}
-    var withCard = this._simulateRounds(this.pHands[i], this.oHands[i], true);
-    var noCard = this._simulateRounds(this.pHands[i], this.oHands[i]);
-    var diff = withCard - noCard;
-    if (verbose) {
-      console.log(i , 'Player Hand: ', this.pHands[i], 'Opp Hand: ', this.oHands[i]);
-      console.log('Player Card: ', this.pCard);
-      console.log('With Card: ', withCard, '%');
-      console.log('Without Card: ', noCard, '%');
-      console.log('Difference: ', diff);
-      console.log('--------------------------------------------------------------------\n');
-    }
-    if (diff > max || !max) {
-      max = diff;
-      maxPos = i;
-    }
+
+    matchupsWithCard[i] = this._simulateRounds(this.pHands[i], this.oHands[i], true);
+    matchups[i] = this._simulateRounds(this.pHands[i], this.oHands[i]);
+    diff[i] = matchupsWithCard[i] - matchups[i];
   }
-  console.log('max difference is at', maxPos);
+  //if its a shit card give it to an already strong hand
+  if (_.max(diff) < 15) {
+    return matchups.indexOf(_.max(matchups));
+  }
+  var maxItem = _.max(diff);
+  var maxPos = diff.indexOf(maxItem);
   return maxPos;
 };
 
