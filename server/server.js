@@ -6,7 +6,8 @@ express    = require('express'),
 app        = express(),
 bodyParser = require('body-parser'),
 ShotCaller = require('./logic'),
-
+//http://www.hacksparrow.com/node-js-https-ssl-certificate.html
+// Needs to communicate with https because facebook blocks otherwise
 https = require('https'),
 hskey = fs.readFileSync('https/hacksparrow-key.pem'),
 hscert = fs.readFileSync('https/hacksparrow-cert.pem'),

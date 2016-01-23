@@ -50,7 +50,7 @@ ShotCaller.prototype.printHands = function (hands, title) {
     console.log(row);
   }
 };
-//Todo print missed ones, sorting fucks up on paint cards
+//Todo print missed ones, sorting messes up on paint cards
 ShotCaller.prototype.printDeck = function () {
   console.log('Remaining Cards: ');
   console.log('-------------------------------------------------------------');
